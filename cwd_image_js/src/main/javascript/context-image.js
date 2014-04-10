@@ -45,7 +45,7 @@
         var rule = element.getAttribute('data-rule');
         if (rule) {
             var source = element.getAttribute('src');
-            if (source.lastIndexOf('/', 0) != 0) {
+            if (source.lastIndexOf('/', 0) !== 0) {
                 source = '/' + source;
             }
             var toRule = element.getAttribute('data-to-rule');
