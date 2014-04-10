@@ -44,16 +44,17 @@
     Context.optimizeElement = function (element, configuration) {
         var rule = element.getAttribute('data-rule');
         if (rule) {
-            var source = element.getAttribute('src');
-            if (source.lastIndexOf('/', 0) !== 0) {
-                source = '/' + source;
-            }
+            /* For img elements, this will return the FQDN stripped of the : */
+            var source = element.src.replace(/^(https?):/, '/$1');
             var toRule = element.getAttribute('data-to-rule');
             var transform = configuration.root + rule + source + (toRule ? toRule : '');
             element.setAttribute('src', transform);
             element.removeAttribute('data-rule');
             if (toRule) {
                 element.removeAttribute('data-to-rule');
+            }
+            if (configuration.visibility) {
+                element.style.visibility = configuration.visibility;
             }
         }
     };
@@ -69,7 +70,7 @@
             'root': '/t'
         };
         if (settings) {
-            configuration = settings;
+            configuration = merge(configuration, settings);
         }
         var elements = document.getElementsByTagName(tagName);
 
@@ -78,4 +79,25 @@
         }
     };
 
+    /**
+     * Merge two sets of object properties
+     *
+     * @param {Object} obj1 the master set of object properties
+     * @param {Object} obj2 the additional object properties to augment the master set
+     * @return {Object} the merged properties
+     */
+    function merge(obj1, obj2) {
+        var obj3 = {};
+        for (var prop in obj1) {
+            if (obj1.hasOwnProperty(prop)) {
+                obj3[prop] = obj1[prop];
+            }
+        }
+        for (var prop in obj2) {
+            if (obj2.hasOwnProperty(prop)) {
+                obj3[prop] = obj2[prop];
+            }
+        }
+        return obj3;
+    }
 }(window.Context = window.Context || {}, null));
