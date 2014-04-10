@@ -100,7 +100,8 @@ module. For example for a regular JavaScript page:
         </script>
 
 *   To force the module to set the visibility style after modifying the image src, define the `visibility` setting when
-calling the module. For example for a regular JavaScript page:
+calling the module. This can be set to any of the CSS accepted values, including `visible`, `hidden`, `initial` and
+`inherit`. For example for a regular JavaScript page:
 
     	<script type="text/javascript">
         window.onload = function () {
