@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/context-integration.iml" filepath="$PROJECT_DIR$/context-integration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/context_integration_distribution/context_integration_distribution.iml" filepath="$PROJECT_DIR$/context_integration_distribution/context_integration_distribution.iml" />
       <module fileurl="file://$PROJECT_DIR$/cwd_image_js/cwd_image_js.iml" filepath="$PROJECT_DIR$/cwd_image_js/cwd_image_js.iml" />
     </modules>
   </component>

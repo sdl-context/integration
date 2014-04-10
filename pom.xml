@@ -49,6 +49,7 @@
 
     <modules>
         <module>cwd_image_js</module>
+        <module>context_integration_distribution</module>
     </modules>
 
     <properties>
@@ -60,7 +61,11 @@
 
     <dependencyManagement>
         <dependencies>
-
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>cwd_image_js</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -103,7 +108,27 @@
                         </excludes>
                     </configuration>
                 </plugin>
-
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.4</version>
+                    <configuration>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                            <forced>true</forced>
+                            <manifestEntries>
+                                <!--suppress MavenModelInspection -->
+                                <Build-Date>${buildDate}</Build-Date>
+                                <!--suppress MavenModelInspection -->
+                                <Build-Revision>${sdl.cwd.buildId}</Build-Revision>
+                                <Implementation-Title>${project.name}</Implementation-Title>
+                                <Implementation-Version>${project.version}</Implementation-Version>
+                                <Implementation-Vendor-Id>${project.groupId}</Implementation-Vendor-Id>
+                                <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
