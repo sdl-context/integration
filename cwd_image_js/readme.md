@@ -75,3 +75,40 @@ example will become `/t/scale/100x200/http//www.mysite.com/my/image.jpg`. This l
 
 *   If a custom visibility style has been specified during configuration, then the element visibility will be set
 appropriately (see below).
+
+
+## Custom configuration
+
+The module supports the following custom configuration settings:
+
+*   To change the location that the image transformation service is running, define the `root` setting when calling the
+module. For example for a regular JavaScript page:
+
+    	<script type="text/javascript">
+        window.onload = function () {
+            Context.optimizeElementsByTagName('img', {root : '/transform'});
+    	}
+        </script>
+
+If you are using jQuery, use the following script code:
+	    <script type="text/javascript">
+	    $( document ).ready(function() {
+    		$('img').optimize({root : '/transform'});
+    	});
+        </script>
+
+*   To force the module to set the visibility style after modifying the image src, define the `visibility` setting when
+calling the module. For example for a regular JavaScript page:
+
+    	<script type="text/javascript">
+        window.onload = function () {
+            Context.optimizeElementsByTagName('img', {visibility : 'visible'});
+    	}
+        </script>
+
+If you are using jQuery, use the following script code:
+	    <script type="text/javascript">
+	    $( document ).ready(function() {
+    		$('img').optimize({visibility : 'visible'});
+    	});
+        </script>
