@@ -37,7 +37,7 @@
     <parent>
         <artifactId>context_integration</artifactId>
         <groupId>com.tridion</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>7.1.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>cwd_image_js</artifactId>
