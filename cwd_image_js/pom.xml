@@ -70,27 +70,51 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
                 <configuration>
-                    <includes>
-                        <include>**/*.js</include>
-                        <include>**/*.xml</include>
-                    </includes>
+                    <sourceDirectory>${project.build.sourceDirectory}/../javascript</sourceDirectory>
                     <excludes>
+                        <exclude>**/*.xml</exclude>
                         <exclude>**/vendor/**</exclude>
-                        <exclude>src/test/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>yuicompressor-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*.xml</exclude>
-                    </excludes>
-                </configuration>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>process-sources</id>
+                        <configuration>
+                            <includes>
+                                <include>**/*.js</include>
+                                <include>**/*.xml</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/vendor/**</exclude>
+                                <exclude>src/test/**</exclude>
+                            </excludes>
+                        </configuration>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>process-artifacts</id>
+                        <configuration>
+                            <basedir>${project.build.directory}</basedir>
+                            <includes>
+                                <include>**/*.js</include>
+                            </includes>
+                        </configuration>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
