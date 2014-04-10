@@ -48,6 +48,7 @@ To configure the module, follow these steps:
         </script>
 
 4.  Alternatively, if you are using jQuery, add the following script code:
+
 	    <script type="text/javascript">
 	    $( document ).ready(function() {
     		$('img').optimize();
@@ -90,7 +91,8 @@ module. For example for a regular JavaScript page:
     	}
         </script>
 
-If you are using jQuery, use the following script code:
+    If you are using jQuery, use the following script code:
+
 	    <script type="text/javascript">
 	    $( document ).ready(function() {
     		$('img').optimize({root : '/transform'});
@@ -106,7 +108,8 @@ calling the module. For example for a regular JavaScript page:
     	}
         </script>
 
-If you are using jQuery, use the following script code:
+    If you are using jQuery, use the following script code:
+
 	    <script type="text/javascript">
 	    $( document ).ready(function() {
     		$('img').optimize({visibility : 'visible'});
