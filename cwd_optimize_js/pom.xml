@@ -57,9 +57,9 @@
                         <source>vendor/jquery-1.11.0.min.js</source>
                         <source>vendor/jasmine-jquery.js</source>
                     </preloadSources>
-                    <sourceIncludes>
-                        <include>**/*context-*.js</include>
-                    </sourceIncludes>
+                    <specIncludes>
+                        <include>**/*-spec.js</include>
+                    </specIncludes>
                 </configuration>
             </plugin>
             <plugin>
