@@ -39,5 +39,19 @@
                 </includes>
             </unpackOptions>
         </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <includes>
+                <include>com.tridion:cwd_integration_documentation</include>
+            </includes>
+            <outputDirectory>.</outputDirectory>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>*.txt</include>
+                    <include>*.md</include>
+                </includes>
+            </unpackOptions>
+        </dependencySet>
     </dependencySets>
 </assembly>

@@ -27,6 +27,8 @@
         <version>7.1.2-SNAPSHOT</version>
     </parent>
 
+    <packaging>jar</packaging>
+
     <artifactId>cwd_image_js</artifactId>
 
     <name>Contextual Image Delivery JavaScript</name>
