@@ -12,7 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cwd_integration_documentation" />
-    <orderEntry type="module" module-name="cwd_image_js" />
+    <orderEntry type="module" module-name="cwd_optimize_js" />
   </component>
 </module>
 

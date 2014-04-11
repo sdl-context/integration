@@ -28,9 +28,9 @@
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
             <includes>
-                <include>com.tridion:cwd_image_js</include>
+                <include>com.tridion:cwd_optimize_js</include>
             </includes>
-            <outputDirectory>context-image-javascript</outputDirectory>
+            <outputDirectory>context-optimize-javascript</outputDirectory>
             <unpack>true</unpack>
             <unpackOptions>
                 <includes>

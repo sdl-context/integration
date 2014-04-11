@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="cwd_image_js" />
         <module name="cwd_integration_documentation" />
+        <module name="cwd_optimize_js" />
       </profile>
     </annotationProcessing>
   </component>

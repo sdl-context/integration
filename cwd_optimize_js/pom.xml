@@ -22,14 +22,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>context_integration</artifactId>
+        <artifactId>cwd_integration</artifactId>
         <groupId>com.tridion</groupId>
         <version>7.1.2-SNAPSHOT</version>
     </parent>
 
     <packaging>jar</packaging>
 
-    <artifactId>cwd_image_js</artifactId>
+    <artifactId>cwd_optimize_js</artifactId>
 
     <name>Contextual Image Delivery JavaScript</name>
     <description>Contextual Image Delivery JavaScript support</description>

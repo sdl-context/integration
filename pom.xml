@@ -35,7 +35,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.tridion</groupId>
-    <artifactId>context_integration</artifactId>
+    <artifactId>cwd_integration</artifactId>
     <version>7.1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -48,7 +48,7 @@
     </organization>
 
     <modules>
-        <module>cwd_image_js</module>
+        <module>cwd_optimize_js</module>
         <module>cwd_integration_documentation</module>
         <module>cwd_integration_distribution</module>
     </modules>
@@ -69,7 +69,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>cwd_image_js</artifactId>
+                <artifactId>cwd_optimize_js</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

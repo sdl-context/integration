@@ -14,7 +14,7 @@ transformation service. For example, the following image element:
 
 would be modified to:
 
-    <img src="/t/scale/200/http//www.mysite.com/my/image.jpg" />
+    <img src="/t/scale/200/http/www.mysite.com/my/image.jpg" />
 
 The module is provided as both a regular JavaScript function, as well as a jQuery object extension.
 
@@ -23,7 +23,8 @@ The module is provided as both a regular JavaScript function, as well as a jQuer
 
 To install the module, follow these steps:
 
-1.  Copy the `context-image.min.js` file from the source distribution to a location within your web application.
+1.  Copy the `context-image.min.js` file from the context-optimize-javascript folder within the distribution to a
+location within your web application.
 
 2.  If you wish to use the jQuery extension, copy the `jquery.context-image.min.js` file from the source distribution to a
 location within your web application.
@@ -43,7 +44,7 @@ To configure the module, follow these steps:
 
     	<script type="text/javascript">
         window.onload = function () {
-            Context.optimizeElementsByTagName('img');
+            Context.optimize();
     	}
         </script>
 
@@ -57,22 +58,22 @@ To configure the module, follow these steps:
 
 Once the web page has loaded, the module will rewrite the matching elements according to the following rules:
 
-*   If the element matches an img tag, the src attribute will be resolved to its fully qualified domain name. For
-example a src URL of `/my/image.jpg` will be resolved to `http://www.mysite.com/my/image.jpg`
+*   The module checks that it is working against an `img` element. The current version does not support optimization of
+any other elements.
 
-*   The resolved src URL will have the `:` within the protocol removed. For example `http://www.mysite.com` will become
-`http//www.mysite.com`
+*   If the src URL is absolute, it will have the `:/` within the URL removed. For example `http://www.mysite.com` will
+become `http/www.mysite.com`
 
 *   The content of the `data-cid-rule` attribute will be prepended to the beginning of the src URL. For example a
-`data-cid-rule` of `/scale/100x200` and a src URL of `http//www.mysite.com/my/image.jpg` will become
-`/scale/100x200/http//www.mysite.com/my/image.jpg`
+`data-cid-rule` of `/scale/100x200` and a src URL of `http/www.mysite.com/my/image.jpg` will become
+`/scale/100x200/http/www.mysite.com/my/image.jpg`
 
 *   The transformation handler location will be prepended to the beginning of the src URL. For example, the previous
-example will become `/t/scale/100x200/http//www.mysite.com/my/image.jpg`. This location can be customised (see below).
+example will become `/t/scale/100x200/http/www.mysite.com/my/image.jpg`. This location can be customised (see below).
 
 *   The content of the `data-cid-to-rule` attribute will be appended to the end of the src URL. For example with a
 `data-cid-to-rule` of `/to/image.gif`, the previous example will become
-`/t/scale/100x200/http//www.mysite.com/my/image.jpg/to/image.gif`
+`/t/scale/100x200/http/www.mysite.com/my/image.jpg/to/image.gif`
 
 *   If a custom visibility style has been specified during configuration, then the element visibility will be set
 appropriately (see below).
@@ -87,7 +88,7 @@ module. For example for a regular JavaScript page:
 
     	<script type="text/javascript">
         window.onload = function () {
-            Context.optimizeElementsByTagName('img', {root : '/transform'});
+            Context.optimize({root : '/transform'});
     	}
         </script>
 
@@ -105,7 +106,7 @@ calling the module. This can be set to any of the CSS accepted values, including
 
     	<script type="text/javascript">
         window.onload = function () {
-            Context.optimizeElementsByTagName('img', {visibility : 'visible'});
+            Context.optimize({visibility : 'visible'});
     	}
         </script>
 

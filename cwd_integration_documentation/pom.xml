@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>context_integration</artifactId>
+        <artifactId>cwd_integration</artifactId>
         <groupId>com.tridion</groupId>
         <version>7.1.2-SNAPSHOT</version>
     </parent>

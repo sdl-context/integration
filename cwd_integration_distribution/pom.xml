@@ -20,7 +20,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>context_integration</artifactId>
+        <artifactId>cwd_integration</artifactId>
         <groupId>com.tridion</groupId>
         <version>7.1.2-SNAPSHOT</version>
     </parent>
@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>cwd_image_js</artifactId>
+            <artifactId>cwd_optimize_js</artifactId>
         </dependency>
     </dependencies>
 
