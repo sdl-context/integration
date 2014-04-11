@@ -29,22 +29,22 @@
      * @param {Object} configuration the configuration
      */
     Context.optimizeElement = function (element, configuration) {
-        if (element.nodeName !== 'IMG') {
+        var rule = element.getAttribute('data-cid-rule');
+        if (!rule || element.nodeName !== 'IMG') {
             return;
         }
-        var rule = element.getAttribute('data-cid-rule');
-        if (rule) {
-            var source = element.getAttribute('src').replace(/^(https?):\//, '/$1');
-            var toRule = element.getAttribute('data-cid-to-rule');
-            var transform = configuration.root + rule + source + (toRule ? toRule : '');
-            element.setAttribute('src', transform);
-            element.removeAttribute('data-cid-rule');
-            if (toRule) {
-                element.removeAttribute('data-cid-to-rule');
-            }
-            if (configuration.visibility) {
-                element.style.visibility = configuration.visibility;
-            }
+        var source = element.getAttribute('src').replace(/^(https?):\//, '/$1');
+        var toRule = element.getAttribute('data-cid-to-rule');
+        element.src = configuration.root + rule + source + (toRule ? toRule : '');
+        element.removeAttribute('data-cid-rule');
+        if (toRule) {
+            element.removeAttribute('data-cid-to-rule');
+        }
+        if (configuration.visibility) {
+            // Register onload event to set visibility only once image has loaded
+            element.onload = function () {
+                this.style.visibility = configuration.visibility;
+            };
         }
     };
 
@@ -100,4 +100,7 @@
         }
         return obj3;
     }
-}(window.Context = window.Context || {}, null));
+}
+    (window.Context = window.Context || {}, null)
+    )
+;
