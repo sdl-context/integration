@@ -39,6 +39,14 @@
     </properties>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>*.md</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>com.github.searls</groupId>
