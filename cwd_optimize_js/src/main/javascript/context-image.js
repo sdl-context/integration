@@ -34,7 +34,7 @@
         }
         var rule = element.getAttribute('data-cid-rule');
         if (rule) {
-            var source = element.getAttribute('src').replace(/^(https?):/, '/$1');
+            var source = element.getAttribute('src').replace(/^(https?):\//, '/$1');
             var toRule = element.getAttribute('data-cid-to-rule');
             var transform = configuration.root + rule + source + (toRule ? toRule : '');
             element.setAttribute('src', transform);

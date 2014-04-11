@@ -20,7 +20,7 @@ describe("Calling the optimize method", function () {
         expect(document.getElementById('imageTest2').getAttribute('src')).toBe(transformLocation +
             '/fit/450/source/my/image2.jpg/to/my.gif');
         expect(document.getElementById('imageTest3').getAttribute('src')).toBe(transformLocation +
-            '/trim/10/http//www.google.com/my/image3.jpg');
+            '/trim/10/http/www.google.com/my/image3.jpg');
         expect(document.getElementById('imageTest4').getAttribute('src')).toBe('/my/image4.jpg');
     });
 
@@ -35,7 +35,7 @@ describe("Calling the optimize method", function () {
         expect(document.getElementById('imageTest2').getAttribute('src')).toBe(transformLocation +
             '/fit/450/source/my/image2.jpg/to/my.gif');
         expect(document.getElementById('imageTest3').getAttribute('src')).toBe(transformLocation +
-            '/trim/10/http//www.google.com/my/image3.jpg');
+            '/trim/10/http/www.google.com/my/image3.jpg');
         expect(document.getElementById('imageTest4').getAttribute('src')).toBe('/my/image4.jpg');
     });
 
@@ -72,7 +72,7 @@ describe("Calling the optimize jQuery function", function () {
 
         expect($('#imageTest1')).toHaveAttr('src', transformLocation + '/scale/320/source/my/image1.jpg');
         expect($('#imageTest2')).toHaveAttr('src', transformLocation + '/fit/450/source/my/image2.jpg/to/my.gif');
-        expect($('#imageTest3')).toHaveAttr('src', transformLocation + '/trim/10/http//www.google.com/my/image3.jpg');
+        expect($('#imageTest3')).toHaveAttr('src', transformLocation + '/trim/10/http/www.google.com/my/image3.jpg');
         expect($('#imageTest4')).toHaveAttr('src', '/my/image4.jpg');
     });
 
@@ -84,7 +84,7 @@ describe("Calling the optimize jQuery function", function () {
 
         expect($('#imageTest1')).toHaveAttr('src', transformLocation + '/scale/320/source/my/image1.jpg');
         expect($('#imageTest2')).toHaveAttr('src', transformLocation + '/fit/450/source/my/image2.jpg/to/my.gif');
-        expect($('#imageTest3')).toHaveAttr('src', transformLocation + '/trim/10/http//www.google.com/my/image3.jpg');
+        expect($('#imageTest3')).toHaveAttr('src', transformLocation + '/trim/10/http/www.google.com/my/image3.jpg');
         expect($('#imageTest4')).toHaveAttr('src', '/my/image4.jpg');
     });
 
