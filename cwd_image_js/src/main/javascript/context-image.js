@@ -29,16 +29,18 @@
      * @param {Object} configuration the configuration
      */
     Context.optimizeElement = function (element, configuration) {
-        var rule = element.getAttribute('data-rule');
+        if (element.nodeName !== 'IMG') {
+            return;
+        }
+        var rule = element.getAttribute('data-cid-rule');
         if (rule) {
-            /* For img elements, this will return the FQDN stripped of the : */
-            var source = element.src.replace(/^(https?):/, '/$1');
-            var toRule = element.getAttribute('data-to-rule');
+            var source = element.getAttribute('src').replace(/^(https?):/, '/$1');
+            var toRule = element.getAttribute('data-cid-to-rule');
             var transform = configuration.root + rule + source + (toRule ? toRule : '');
             element.setAttribute('src', transform);
-            element.removeAttribute('data-rule');
+            element.removeAttribute('data-cid-rule');
             if (toRule) {
-                element.removeAttribute('data-to-rule');
+                element.removeAttribute('data-cid-to-rule');
             }
             if (configuration.visibility) {
                 element.style.visibility = configuration.visibility;
@@ -65,6 +67,17 @@
             this.optimizeElement(elements[i], configuration);
         }
     };
+
+
+    /**
+     * Optimize elements
+     *
+     * @param {Object} settings the custom user settings
+     */
+    Context.optimize = function (settings) {
+        return Context.optimizeElementsByTagName('img', settings);
+    };
+
 
     /**
      * Merge two sets of object properties

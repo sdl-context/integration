@@ -4,9 +4,6 @@
  */
 describe("Calling the optimize method", function () {
 
-    var transformUrl = window.location.protocol.replace(/:/g, '') + '//' + window.location.hostname +
-        (window.location.port ? ':' + window.location.port : '');
-
     beforeEach(function () {
         jasmine.getFixtures().fixturesPath = 'spec/fixtures';
         loadFixtures('context-image-fixture.html');
@@ -18,10 +15,10 @@ describe("Calling the optimize method", function () {
         Context.optimizeElementsByTagName('img');
 
         // We use getAttribute('src') in order to get the raw string, rather than a parsed URL
-        expect(document.getElementById('imageTest1').getAttribute('src')).toBe(transformLocation + '/scale/320/' +
-            transformUrl + '/my/image1.jpg');
-        expect(document.getElementById('imageTest2').getAttribute('src')).toBe(transformLocation + '/fit/450/' +
-            transformUrl + '/my/image2.jpg/to/my.gif');
+        expect(document.getElementById('imageTest1').getAttribute('src')).toBe(transformLocation +
+            '/scale/320/source/my/image1.jpg');
+        expect(document.getElementById('imageTest2').getAttribute('src')).toBe(transformLocation +
+            '/fit/450/source/my/image2.jpg/to/my.gif');
         expect(document.getElementById('imageTest3').getAttribute('src')).toBe(transformLocation +
             '/trim/10/http//www.google.com/my/image3.jpg');
         expect(document.getElementById('imageTest4').getAttribute('src')).toBe('/my/image4.jpg');
@@ -33,10 +30,10 @@ describe("Calling the optimize method", function () {
 
         Context.optimizeElementsByTagName('img', {root: transformLocation});
 
-        expect(document.getElementById('imageTest1').getAttribute('src')).toBe(transformLocation + '/scale/320/' +
-            transformUrl + '/my/image1.jpg');
-        expect(document.getElementById('imageTest2').getAttribute('src')).toBe(transformLocation + '/fit/450/' +
-            transformUrl + '/my/image2.jpg/to/my.gif');
+        expect(document.getElementById('imageTest1').getAttribute('src')).toBe(transformLocation +
+            '/scale/320/source/my/image1.jpg');
+        expect(document.getElementById('imageTest2').getAttribute('src')).toBe(transformLocation +
+            '/fit/450/source/my/image2.jpg/to/my.gif');
         expect(document.getElementById('imageTest3').getAttribute('src')).toBe(transformLocation +
             '/trim/10/http//www.google.com/my/image3.jpg');
         expect(document.getElementById('imageTest4').getAttribute('src')).toBe('/my/image4.jpg');
@@ -57,15 +54,11 @@ describe("Calling the optimize method", function () {
     it("should rewrite the src attribute for other supported element types", function () {
 
         Context.optimizeElementsByTagName('iframe');
-        expect(document.getElementById('iframeTest1').getAttribute('src')).toBe(
-            '/t/trim/420/http//www.google.com/my/image5.jpg');
+        expect(document.getElementById('iframeTest1').getAttribute('src')).toBe('http://www.google.com/my/image5.jpg');
     });
 });
 
 describe("Calling the optimize jQuery function", function () {
-
-    var transformUrl = window.location.protocol.replace(/:/g, '') + '//' + window.location.hostname +
-        (window.location.port ? ':' + window.location.port : '');
 
     beforeEach(function () {
         jasmine.getFixtures().fixturesPath = 'spec/fixtures';
@@ -77,9 +70,8 @@ describe("Calling the optimize jQuery function", function () {
         var transformLocation = "/t";
         $('img').optimize();
 
-        expect($('#imageTest1')).toHaveAttr('src', transformLocation + '/scale/320/' + transformUrl + '/my/image1.jpg');
-        expect($('#imageTest2')).toHaveAttr('src', transformLocation + '/fit/450/' +
-            transformUrl + '/my/image2.jpg/to/my.gif');
+        expect($('#imageTest1')).toHaveAttr('src', transformLocation + '/scale/320/source/my/image1.jpg');
+        expect($('#imageTest2')).toHaveAttr('src', transformLocation + '/fit/450/source/my/image2.jpg/to/my.gif');
         expect($('#imageTest3')).toHaveAttr('src', transformLocation + '/trim/10/http//www.google.com/my/image3.jpg');
         expect($('#imageTest4')).toHaveAttr('src', '/my/image4.jpg');
     });
@@ -90,9 +82,8 @@ describe("Calling the optimize jQuery function", function () {
 
         $('img').optimize({root: transformLocation});
 
-        expect($('#imageTest1')).toHaveAttr('src', transformLocation + '/scale/320/' + transformUrl + '/my/image1.jpg');
-        expect($('#imageTest2')).toHaveAttr('src', transformLocation + '/fit/450/' +
-            transformUrl + '/my/image2.jpg/to/my.gif');
+        expect($('#imageTest1')).toHaveAttr('src', transformLocation + '/scale/320/source/my/image1.jpg');
+        expect($('#imageTest2')).toHaveAttr('src', transformLocation + '/fit/450/source/my/image2.jpg/to/my.gif');
         expect($('#imageTest3')).toHaveAttr('src', transformLocation + '/trim/10/http//www.google.com/my/image3.jpg');
         expect($('#imageTest4')).toHaveAttr('src', '/my/image4.jpg');
     });
@@ -112,6 +103,6 @@ describe("Calling the optimize jQuery function", function () {
     it("should rewrite the src attribute for other supported element types", function () {
 
         $('iframe').optimize();
-        expect($('#iframeTest1')).toHaveAttr('src', '/t/trim/420/http//www.google.com/my/image5.jpg');
+        expect($('#iframeTest1')).toHaveAttr('src', 'http://www.google.com/my/image5.jpg');
     });
 });
