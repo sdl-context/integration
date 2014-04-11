@@ -70,7 +70,7 @@ example a src URL of `/my/image.jpg` will be resolved to `http://www.mysite.com/
 *   The transformation handler location will be prepended to the beginning of the src URL. For example, the previous
 example will become `/t/scale/100x200/http//www.mysite.com/my/image.jpg`. This location can be customised (see below).
 
-*   The content of the `data-to-rule` attribute will be appended to the edn of the src URL. For example with a
+*   The content of the `data-to-rule` attribute will be appended to the end of the src URL. For example with a
 `data-to-rule` of `/to/image.gif`, the previous example will become
 `/t/scale/100x200/http//www.mysite.com/my/image.jpg/to/image.gif`
 
