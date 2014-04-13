@@ -33,18 +33,21 @@
         if (!rule || element.nodeName !== 'IMG') {
             return;
         }
+        if (configuration.visibility) {
+            // Register onload event to set visibility only once image has loaded
+            var setVisibility = function () {
+                this.style.visibility = configuration.visibility;
+            };
+            element.addEventListener ?
+                element.addEventListener("load", setVisibility, false) :
+                element.attachEvent && element.attachEvent("onload", setVisibility);
+        }
         var source = element.getAttribute('src').replace(/^(https?):\//, '/$1');
         var toRule = element.getAttribute('data-cid-to-rule');
         element.src = configuration.root + rule + source + (toRule ? toRule : '');
         element.removeAttribute('data-cid-rule');
         if (toRule) {
             element.removeAttribute('data-cid-to-rule');
-        }
-        if (configuration.visibility) {
-            // Register onload event to set visibility only once image has loaded
-            element.onload = function () {
-                this.style.visibility = configuration.visibility;
-            };
         }
     };
 
