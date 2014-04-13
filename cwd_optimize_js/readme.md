@@ -102,7 +102,12 @@ module. For example for a regular JavaScript page:
 
 *   To force the module to set the visibility style after modifying the image src, define the `visibility` setting when
 calling the module. This can be set to any of the CSS accepted values, including `visible`, `hidden`, `initial` and
-`inherit`. For example for a regular JavaScript page:
+`inherit`. This can be used to hide the original image during rendering prior to the JavaScript optimizing the image.
+For example, given the HTML:
+
+        <img style="visibility: hidden;" src="http://www.mysite.com/my/image.jpg" data-cid-rule="/scale/200" />
+
+    Then for a regular JavaScript page, add this script to change the visibility to `visible` when completed:
 
     	<script type="text/javascript">
         window.onload = function () {
@@ -117,3 +122,5 @@ calling the module. This can be set to any of the CSS accepted values, including
     		$('img').optimize({visibility : 'visible'});
     	});
         </script>
+
+    You might also benefit from adding width and height style properties to the img element.
