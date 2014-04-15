@@ -74,7 +74,7 @@
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>yuicompressor-maven-plugin</artifactId>
                 <configuration>
-                    <sourceDirectory>${project.build.sourceDirectory}/../javascript</sourceDirectory>
+                    <sourceDirectory>${project.basedir}/src/main/javascript</sourceDirectory>
                     <excludes>
                         <exclude>**/*.md</exclude>
                         <exclude>**/*.xml</exclude>
