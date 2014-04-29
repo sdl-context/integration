@@ -27,10 +27,10 @@
         <version>7.1.2-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cwd_image_dotnet</artifactId>
+    <artifactId>cwd_integration_dotnet</artifactId>
     <packaging>pom</packaging>
 
-    <name>Contextual Image Delivery .NET</name>
+    <name>Contextual Web Delivery Integraton .NET</name>
 
     <properties>
         <dotnet.4.0.sdk.dir>C:/Windows/Microsoft.NET/Framework64/v4.0.30319</dotnet.4.0.sdk.dir>

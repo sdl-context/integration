@@ -49,7 +49,7 @@
 
     <modules>
         <module>cwd_optimize_js</module>
-        <module>cwd_image_dotnet</module>
+        <module>cwd_integration_dotnet</module>
         <module>cwd_integration_documentation</module>
         <module>cwd_integration_distribution</module>
     </modules>
@@ -75,7 +75,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>cwd_image_dotnet</artifactId>
+                <artifactId>cwd_integration_dotnet</artifactId>
                 <version>${project.version}</version>
                 <type>zip</type>
             </dependency>
