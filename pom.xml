@@ -75,6 +75,12 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>cwd_image_dotnet</artifactId>
+                <version>${project.version}</version>
+                <type>zip</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>cwd_optimize_js</artifactId>
                 <version>${project.version}</version>
             </dependency>

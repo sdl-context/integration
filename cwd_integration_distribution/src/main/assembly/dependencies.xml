@@ -42,7 +42,7 @@
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
             <includes>
-                <include>com.tridion:cwd_image_dotnet</include>
+                <include>com.tridion:cwd_image_dotnet:zip</include>
             </includes>
             <outputDirectory>context-image-dotnet</outputDirectory>
             <unpack>true</unpack>
