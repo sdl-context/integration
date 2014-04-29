@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>cwd_integration</artifactId>
+        <groupId>com.tridion</groupId>
+        <version>7.1.2-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>cwd_image_dotnet</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Contextual Image Delivery .NET</name>
+
+    <properties>
+        <dotnet.4.0.sdk.dir>C:/Windows/Microsoft.NET/Framework64/v4.0.30319</dotnet.4.0.sdk.dir>
+        <dotnet.sdk.dir>${dotnet.4.0.sdk.dir}</dotnet.sdk.dir>
+        <dotnet.src.dir>${basedir}/src/main/dotNet/Tridion.Context.Integrations</dotnet.src.dir>
+        <msbuild.path>${dotnet.sdk.dir}/MSBuild.exe</msbuild.path>
+        <msbuild.file>Tridion.Context.Integrations.proj</msbuild.file>
+        <nuget.path>${dotnet.src.dir}/Tools/NuGet/NuGet.exe</nuget.path>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>parse-version</id>
+                        <goals>
+                            <goal>parse-version</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>dotnet-build</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                        <configuration>
+                            <buildNumberPropertyName>dotNetBuild</buildNumberPropertyName>
+                            <format>{0}.{1}.{2}.{3}</format>
+                            <items>
+                                <item>${parsedVersion.majorVersion}</item>
+                                <item>${parsedVersion.minorVersion}</item>
+                                <item>${parsedVersion.incrementalVersion}</item>
+                                <item>${parsedVersion.buildNumber}</item>
+                            </items>
+                            <doCheck>false</doCheck>
+                            <doUpdate>false</doUpdate>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <executable>${msbuild.path}</executable>
+                    <workingDirectory>${dotnet.src.dir}</workingDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dotnet</id>
+            <!-- Note that activation conditions are ORed together. This is a maven bug. -->
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+                <file>
+                    <exists>${dotnet.4.0.sdk.dir}</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>dotnet-clean</id>
+                                <phase>clean</phase>
+                                <configuration>
+                                    <arguments>
+                                        <argument>${msbuild.file}</argument>
+                                        <argument>/t:Clean</argument>
+                                    </arguments>
+                                </configuration>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>dotnet-build</id>
+                                <phase>compile</phase>
+                                <configuration>
+                                    <arguments>
+                                        <argument>${msbuild.file}</argument>
+                                        <argument>/t:Build</argument>
+                                        <argument>/p:BuildRelease=${dotNetBuild}</argument>
+                                    </arguments>
+                                </configuration>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>dotnet-test</id>
+                                <phase>test</phase>
+                                <configuration>
+                                    <arguments>
+                                        <argument>${msbuild.file}</argument>
+                                        <argument>/t:Test</argument>
+                                    </arguments>
+                                </configuration>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <zip duplicate="preserve"
+                                             destfile="${project.build.directory}/${project.artifactId}-${project.version}.zip">
+                                            <mappedresources>
+                                                <flattenmapper />
+                                                <fileset dir="${dotnet.src.dir}">
+                                                    <include name="**/*in/${configuration.type}/Tridion.Context*.dll" />
+                                                    <include name="**/*in/${configuration.type}/Tridion.Context*.pdb" />
+                                                    <exclude name="**/Test*" />
+                                                    <exclude name="**/test*" />
+                                                </fileset>
+                                            </mappedresources>
+                                        </zip>
+                                        <attachartifact
+                                                file="${project.build.directory}/${project.artifactId}-${project.version}.zip"
+                                                type="zip" />
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

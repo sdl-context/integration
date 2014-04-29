@@ -1,0 +1,13 @@
+*.suo
+*.user
+*.[Cc]ache
+# Note that we only need the packages config, not the downloaded packages
+packages/
+!packages/*.config
+[Oo]bj/
+[Bb]in/
+[Bb]uild/
+[Dd]ebug*/
+[Rr]elease*/
+[Hh]elp*/
+CommonAssemblyInfo.cs

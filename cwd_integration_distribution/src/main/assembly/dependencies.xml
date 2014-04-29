@@ -42,6 +42,20 @@
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
             <includes>
+                <include>com.tridion:cwd_image_dotnet</include>
+            </includes>
+            <outputDirectory>context-image-dotnet</outputDirectory>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>**/*.dll</include>
+                    <include>**/*.md</include>
+                </includes>
+            </unpackOptions>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <includes>
                 <include>com.tridion:cwd_integration_documentation</include>
             </includes>
             <outputDirectory>.</outputDirectory>
