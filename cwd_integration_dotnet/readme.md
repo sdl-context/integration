@@ -28,13 +28,13 @@ the distribution to a location on your computer.
 
 2.  Upload the assembly into SDL Tridion using the following command:
 
-bq. %TRIDION_HOME%\bin\client\TcmUploadAssembly.exe /targeturl:<Tridion_CME_URL> /username:<admin_user>
-    /password:<admn_password> /verbose /folder:<TCM_ID_folder> Tridion.Context.TemplateBuildingBlocks.dll
+        %TRIDION_HOME%\bin\client\TcmUploadAssembly.exe /targeturl:<Tridion_CME_URL> /username:<admin_user>
+        /password:<admn_password> /verbose /folder:<TCM_ID_folder> Tridion.Context.TemplateBuildingBlocks.dll
 
-For example:
+    For example:
 
-bq.  %TRIDION_HOME%\bin\client\TcmUploadAssembly.exe /targeturl:http://my.tridion.site /username:Administrator
-    /password:password /verbose /folder:tcm:2-5-2 Tridion.Context.TemplateBuildingBlocks.dll
+        %TRIDION_HOME%\bin\client\TcmUploadAssembly.exe /targeturl:http://my.tridion.site /username:Administrator
+        /password:password /verbose /folder:tcm:2-5-2 Tridion.Context.TemplateBuildingBlocks.dll
 
 This will create a new Template Building Block and associated Schema named `Enable Contextual Image Optimizer` within
 the folder specified above.
@@ -65,19 +65,19 @@ elements.
 become `http/www.mysite.com`.
 
 *   The content of the `data-cid-rule` attribute will be prepended to the beginning of the src URL. For example a
-`data-cid-rule` of `/scale/100x200` and a src URL of `http/www.mysite.com/my/image.jpg` will become
+`data-cid-rule` of `/scale/100x200` and a src URL of `http://www.mysite.com/my/image.jpg` will become
 `/scale/100x200/http/www.mysite.com/my/image.jpg`.
 
 *   The root location will be prepended to the beginning of the src URL. For example, the previous
 example will become `/t/scale/100x200/http/www.mysite.com/my/image.jpg`. This location can be customised by modifying
-Image Optimizer Root Location parameter - this includes passing in a remote server address. For example, if the location
-is set to `http://my.transform.server/transform` then the example will become
+the Image Optimizer Root Location parameter - this includes passing in a remote server address. For example, if the
+location is set to `http://my.transform.server/transform` then the example will become
 `http://my.transform.server/transform/scale/100x200/http/www.mysite.com/my/image.jpg`.
 
 *   The content of the `data-cid-to-rule` attribute will be appended to the end of the src URL. For example with a
 `data-cid-to-rule` of `/to/image.gif`, the previous example will become
-`/t/scale/100x200/http/www.mysite.com/my/image.jpg/to/image.gif`. Note that, when used, the data-cid-to-rule must appear
-after the data-cid-rule attribute.
+`/t/scale/100x200/http/www.mysite.com/my/image.jpg/to/image.gif`. Note that, when used, the `data-cid-to-rule` must
+appear after the `data-cid-rule` attribute.
 
 If you are using relative URLs for your images, it is necessary to include a Contextual Image Delivery source mapping
 at the end of your `data-cid-rule`, together with an appropriate configuration within the Contextual Image Delivery
@@ -96,7 +96,7 @@ variable.
 3.  Ensure that you have a copy of Maven 3 and Java 1.7 or above on your build machine
 4.  Run the following command from the top of the context-integrations distribution:
 
-    mvn clean install
+        mvn clean install
 
 The build system will create the distribution files within the following folder:
 
