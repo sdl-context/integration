@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--EXTERNAL_PROPERTIES: TRIDION_HOME-->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <MSBuildCommunityTasksPath Condition="'$(MSBuildCommunityTasksPath)' == ''">$(MSBuildStartupDirectory)\packages\MSBuildTasks.1.4.0.65\tools</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets"/>
+
+  <PropertyGroup>
+    <ProductName>Tridion Contextual Web Delivery Integrations</ProductName>
+    <CompanyName>SDL Tridion Development Lab B.V.</CompanyName>
+    <BuildRelease>0.0.0.0</BuildRelease>
+
+    <Configuration>Release</Configuration>
+
+    <BuildDir>$(MSBuildStartupDirectory)\Build\</BuildDir>
+
+    <NUnitResultsFile>$(BuildDir)\nunit-result.xml</NUnitResultsFile>
+
+    <TridionPath Condition="Exists('$(TRIDION_HOME)')">$(TRIDION_HOME)\bin\client</TridionPath>
+
+    <SolutionProperties>
+      OutDir=$(BuildDir);
+      Platform=Any CPU;
+      Configuration=$(Configuration);
+      ReferencePath=$(TridionPath)
+    </SolutionProperties>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Solution Include="Tridion.Context.Integrations.sln">
+      <Properties>
+        $(SolutionProperties)
+      </Properties>
+    </Solution>
+
+    <AssemblyInfoFiles Include="Tridion.Context.TemplateBuildingBlocks\Properties\CommonAssemblyInfo.cs;
+                       Tridion.Context.TemplateBuildingBlocks.Tests\Properties\CommonAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <Target Name="AssemblyVersion" Inputs="@(AssemblyInfoFiles)" Outputs="UpdatedAssemblyVersionFiles">
+    <Attrib Files="%(AssemblyInfoFiles.FullPath)" Normal="true"/>
+    <AssemblyInfo
+        CodeLanguage="CS"
+        OutputFile="%(AssemblyInfoFiles.FullPath)"
+        AssemblyProduct="$(ProductName)"
+        AssemblyCompany="$(CompanyName)"
+        AssemblyCopyright="© Copyright © 1999-2014 $(CompanyName)"
+        AssemblyVersion="$(BuildRelease)"
+        AssemblyFileVersion="$(BuildRelease)"
+        AssemblyInformationalVersion="$(BuildRelease)">
+      <Output TaskParameter="OutputFile" ItemName="UpdatedAssemblyVersionFiles"/>
+    </AssemblyInfo>
+  </Target>
+
+  <Target Name="Clean">
+    <MSBuild Projects="@(Solution)" Targets="Clean"/>
+
+    <RemoveDir Directories="$(BuildDir)" />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="AssemblyVersion">
+    <MSBuild Projects="@(Solution)"/>
+  </Target>
+
+  <Target Name="Test">
+    <CreateItem Include="$(BuildDir)*.Tests.dll">
+      <Output TaskParameter="Include" ItemName="TestAssemblies"/>
+    </CreateItem>
+
+    <NUnit Assemblies="@(TestAssemblies)" ToolPath="packages\NUnit.Runners.2.6.3\tools"
+       DisableShadowCopy="true" Force32Bit="false"
+       ProjectConfiguration="$(Configuration)" ContinueOnError="false"
+       OutputXmlFile="$(NUnitResultsFile)" Framework="4.0" />
+  </Target>
+
+</Project>

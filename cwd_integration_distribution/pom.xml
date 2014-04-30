@@ -89,4 +89,50 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dotnet</id>
+            <!-- Note that activation conditions are ORed together. This is a maven bug. -->
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+                <file>
+                    <exists>${dotnet.sdk.dir}</exists>
+                </file>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>cwd_integration_dotnet</artifactId>
+                    <type>zip</type>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>dotnet-assemblies</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <configuration>
+                                    <appendAssemblyId>false</appendAssemblyId>
+                                    <attach>false</attach>
+                                    <finalName>${project.artifactId}</finalName>
+                                    <descriptors>
+                                        <descriptor>src/main/assembly/dependencies-dotnet.xml</descriptor>
+                                    </descriptors>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

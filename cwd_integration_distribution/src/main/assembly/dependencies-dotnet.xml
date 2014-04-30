@@ -19,26 +19,12 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
 
-    <id>dependencies</id>
+    <id>dependencies-dotnet</id>
     <formats>
         <format>dir</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
     <dependencySets>
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <includes>
-                <include>com.tridion:cwd_optimize_js</include>
-            </includes>
-            <outputDirectory>context-optimize-javascript</outputDirectory>
-            <unpack>true</unpack>
-            <unpackOptions>
-                <includes>
-                    <include>**/*.js</include>
-                    <include>**/*.md</include>
-                </includes>
-            </unpackOptions>
-        </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
             <includes>
@@ -50,20 +36,6 @@
                 <includes>
                     <include>**/*.dll</include>
                     <include>**/*.md</include>
-                </includes>
-            </unpackOptions>
-        </dependencySet>
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <includes>
-                <include>com.tridion:cwd_integration_documentation</include>
-            </includes>
-            <outputDirectory>.</outputDirectory>
-            <unpack>true</unpack>
-            <unpackOptions>
-                <includes>
-                    <include>*.txt</include>
-                    <include>*.md</include>
                 </includes>
             </unpackOptions>
         </dependencySet>
