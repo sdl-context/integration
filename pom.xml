@@ -64,6 +64,8 @@
         <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
         <currentYearDynamic>${maven.build.timestamp}</currentYearDynamic>
         <license.header.file>${project.basedir}/src/license/sdl_license/header.txt</license.header.file>
+        <dotnet.4.0.sdk.dir>C:/Windows/Microsoft.NET/Framework64/v4.0.30319</dotnet.4.0.sdk.dir>
+        <dotnet.sdk.dir>${dotnet.4.0.sdk.dir}</dotnet.sdk.dir>
     </properties>
 
     <dependencyManagement>

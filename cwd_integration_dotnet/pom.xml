@@ -33,8 +33,6 @@
     <name>Contextual Web Delivery Integration .NET</name>
 
     <properties>
-        <dotnet.4.0.sdk.dir>C:/Windows/Microsoft.NET/Framework64/v4.0.30319</dotnet.4.0.sdk.dir>
-        <dotnet.sdk.dir>${dotnet.4.0.sdk.dir}</dotnet.sdk.dir>
         <dotnet.src.dir>${basedir}/src/main/dotNet/Tridion.Context.Integrations</dotnet.src.dir>
         <msbuild.path>${dotnet.sdk.dir}/MSBuild.exe</msbuild.path>
         <msbuild.file>Tridion.Context.Integrations.proj</msbuild.file>
