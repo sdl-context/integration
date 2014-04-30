@@ -3,8 +3,11 @@
 <!--EXTERNAL_PROPERTIES: TRIDION_HOME-->
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Import Project="packages\MSBuildTasks.1.4.0.65\tools\MSBuild.Community.Tasks.Targets"
-          Condition="Exists('packages\MSBuildTasks.1.4.0.65\tools\MSBuild.Community.Tasks.Targets')"/>
+  <PropertyGroup>
+    <MSBuildCommunityTasksPath Condition="'$(MSBuildCommunityTasksPath)' == ''">$(MSBuildStartupDirectory)\packages\MSBuildTasks.1.4.0.65\tools</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets"/>
 
   <PropertyGroup>
     <ProductName>Tridion Contextual Web Delivery Integrations</ProductName>
