@@ -62,19 +62,19 @@
     <Reference Include="System.Web" />
     <Reference Include="System.XML" />
     <Reference Include="Tridion.Common">
-      <HintPath>$(TRIDION_HOME)\bin\client\Tridion.Common.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Tridion\bin\client\Tridion.Common.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager">
-      <HintPath>$(TRIDION_HOME)\bin\client\Tridion.ContentManager.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Tridion\bin\client\Tridion.ContentManager.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager.Common">
-      <HintPath>$(TRIDION_HOME)\bin\client\Tridion.ContentManager.Common.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Tridion\bin\client\Tridion.ContentManager.Common.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager.Publishing">
-      <HintPath>$(TRIDION_HOME)\bin\client\Tridion.ContentManager.Publishing.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Tridion\bin\client\Tridion.ContentManager.Publishing.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager.Templating">
-      <HintPath>$(TRIDION_HOME)\bin\client\Tridion.ContentManager.Templating.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Tridion\bin\client\Tridion.ContentManager.Templating.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
