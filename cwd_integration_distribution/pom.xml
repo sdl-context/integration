@@ -40,11 +40,6 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>cwd_integration_dotnet</artifactId>
-            <type>zip</type>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>cwd_optimize_js</artifactId>
         </dependency>
     </dependencies>
@@ -107,6 +102,13 @@
                     <exists>${dotnet.sdk.dir}</exists>
                 </file>
             </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>cwd_integration_dotnet</artifactId>
+                    <type>zip</type>
+                </dependency>
+            </dependencies>
             <build>
                 <plugins>
                     <plugin>
