@@ -1,11 +1,11 @@
-﻿SDL Tridion Contextual Image Delivery Template Building Block
-=============================================================
+﻿SDL Tridion Contextual Image Optimizer Template Building Block
+==============================================================
 
 
 ## Overview
 
-This module provides a Template Building Block (TBB) to allow users of SDL Tridion to make use of the Contextual Image
-Delivery transformation service.
+This module provides a Contextual Image Optimizer Template Building Block (TBB) that allow users of SDL Tridion to make
+use of the Contextual Image Delivery transformation service.
 
 It modifies HTML image elements that include a `data-cid-rule` attribute to be processed by a locally configured image
 transformation service. For example, the following image element:
