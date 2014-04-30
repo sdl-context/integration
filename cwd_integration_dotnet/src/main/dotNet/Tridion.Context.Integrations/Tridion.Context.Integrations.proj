@@ -34,8 +34,8 @@
       </Properties>
     </Solution>
 
-    <AssemblyInfoFiles Include="Tridion.Context.Image.TemplateBuildingBlocks\Properties\CommonAssemblyInfo.cs;
-                       Tridion.Context.Image.TemplateBuildingBlocks.Tests\Properties\CommonAssemblyInfo.cs"/>
+    <AssemblyInfoFiles Include="Tridion.Context.TemplateBuildingBlocks\Properties\CommonAssemblyInfo.cs;
+                       Tridion.Context.TemplateBuildingBlocks.Tests\Properties\CommonAssemblyInfo.cs" />
   </ItemGroup>
 
   <Target Name="AssemblyVersion" Inputs="@(AssemblyInfoFiles)" Outputs="UpdatedAssemblyVersionFiles">
@@ -65,13 +65,13 @@
 
   <Target Name="Test">
     <CreateItem Include="$(BuildDir)*.Tests.dll">
-      <Output TaskParameter="Include" ItemName="TestAssemblies" />
+      <Output TaskParameter="Include" ItemName="TestAssemblies"/>
     </CreateItem>
 
     <NUnit Assemblies="@(TestAssemblies)" ToolPath="packages\NUnit.Runners.2.6.3\tools"
-           DisableShadowCopy="true" Force32Bit="false"
-           ProjectConfiguration="$(Configuration)" ContinueOnError="false"
-           OutputXmlFile="$(NUnitResultsFile)" />
+       DisableShadowCopy="true" Force32Bit="false"
+       ProjectConfiguration="$(Configuration)" ContinueOnError="false"
+       OutputXmlFile="$(NUnitResultsFile)" Framework="4.0" />
   </Target>
 
 </Project>
