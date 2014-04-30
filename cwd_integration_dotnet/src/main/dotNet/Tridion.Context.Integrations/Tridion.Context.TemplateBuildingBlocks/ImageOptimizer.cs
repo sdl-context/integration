@@ -17,15 +17,15 @@
 using Tridion.ContentManager.Templating;
 using Tridion.ContentManager.Templating.Assembly;
 
-namespace Tridion.Context.Image.TemplateBuildingBlocks
+namespace Tridion.Context.TemplateBuildingBlocks
 {
-    [TcmTemplateTitle("CID Image Resolver TBB")]
-    [TcmTemplateParameterSchema("resource:Tridion.Context.Image.TemplateBuildingBlocks.Resources.CIDImageResolverParameters.xsd")]
-    public class CidImageResolver : ITemplate, IDisposable
+    [TcmTemplateTitle("Enable Contextual Image Optimizer")]
+    [TcmTemplateParameterSchema("resource:Tridion.Context.TemplateBuildingBlocks.Resources.ImageOptimizerParameters.xsd")]
+    public class ImageOptimizer : ITemplate, IDisposable
     {
         private readonly TemplatingLogger logger;
 
-        public CidImageResolver()
+        public ImageOptimizer()
         {
             logger = TemplatingLogger.GetLogger(GetType());
         }
@@ -36,20 +36,19 @@ namespace Tridion.Context.Image.TemplateBuildingBlocks
             var outputItem = package.GetByName(Package.OutputName);
             if (outputItem == null)
             {
-                logger.Error("Output is Null. Exiting!");
+                logger.Error("Output is empty");
                 return;
             }
-            var parameterRule = package.GetValue("cid-rule");
-            if (string.IsNullOrEmpty(parameterRule))
+            var parameterRoot = package.GetValue("cid-root");
+            if (string.IsNullOrEmpty(parameterRoot))
             {
-                logger.Warning("CID Root is Null. Using default transformer path '/t'");
-                parameterRule = "/t";
+                logger.Warning("Root location is empty. Using default location of '/t'");
+                parameterRoot = "/t";
             }
             var outputText = outputItem.GetAsString();
 
-            // replace html entities with their original characters
-            var cidStringRenderer = new CidStringRenderer();
-            outputItem.SetAsString(cidStringRenderer.RenderInput(outputText, parameterRule));
+            var imageElementOptimizer = new ImageElementOptimizer();
+            outputItem.SetAsString(imageElementOptimizer.OptimizeElements(outputText, parameterRoot));
         }
 
         public void Dispose()

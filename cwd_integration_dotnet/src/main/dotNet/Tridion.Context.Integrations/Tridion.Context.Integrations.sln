@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tridion.Context.Image.TemplateBuildingBlocks", "Tridion.Context.Image.TemplateBuildingBlocks\Tridion.Context.Image.TemplateBuildingBlocks.csproj", "{6F9873EC-74EE-4053-AACA-DC1972C6D40F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tridion.Context.TemplateBuildingBlocks", "Tridion.Context.TemplateBuildingBlocks\Tridion.Context.TemplateBuildingBlocks.csproj", "{6F9873EC-74EE-4053-AACA-DC1972C6D40F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tridion.Context.Image.TemplateBuildingBlocks.Tests", "Tridion.Context.Image.TemplateBuildingBlocks.Tests\Tridion.Context.Image.TemplateBuildingBlocks.Tests.csproj", "{A3FFE126-BB2F-4B33-92F4-DBFAEE1E9278}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tridion.Context.TemplateBuildingBlocks.Tests", "Tridion.Context.TemplateBuildingBlocks.Tests\Tridion.Context.TemplateBuildingBlocks.Tests.csproj", "{A3FFE126-BB2F-4B33-92F4-DBFAEE1E9278}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,14 +3,14 @@
   <xsd:annotation>
     <xsd:appinfo>
       <tcm:Labels xmlns:tcm="http://www.tridion.com/ContentManager/5.0">
-        <tcm:Label ElementName="cid-rule" Metadata="false">CIDImageResolverRoot</tcm:Label>
+        <tcm:Label ElementName="cid-root" Metadata="false">Image Optimzer Root Location</tcm:Label>
       </tcm:Labels>
     </xsd:appinfo>
   </xsd:annotation>
   <xsd:element name="Parameters">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element name="cid-rule" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
+        <xsd:element name="cid-root" minOccurs="1" maxOccurs="1" type="xsd:normalizedString">
           <xsd:annotation>
             <xsd:appinfo>
               <tcm:ExtensionXml xmlns:tcm="http://www.tridion.com/ContentManager/5.0"></tcm:ExtensionXml>

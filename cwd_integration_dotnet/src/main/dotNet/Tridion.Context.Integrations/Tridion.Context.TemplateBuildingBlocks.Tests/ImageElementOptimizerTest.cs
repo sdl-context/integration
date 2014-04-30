@@ -15,12 +15,12 @@
  */
 ﻿using NUnit.Framework;
 
-namespace Tridion.Context.Image.TemplateBuildingBlocks.Tests
+namespace Tridion.Context.TemplateBuildingBlocks.Tests
 {
     [TestFixture]
-    public class CidStringRendererTest
+    public class ImageElementOptimizerTest
     {
-        private CidStringRenderer stringRenderer;
+        private ImageElementOptimizer imageElementOptimizer;
 
         private const string LongHtmlString =
             "<span><tcdl:eval expression=\"browser.displayWidth\"/></span><br/>" +
@@ -49,7 +49,7 @@ namespace Tridion.Context.Image.TemplateBuildingBlocks.Tests
         [TestFixtureSetUp]
         public void TestFixtureSetup()
         {
-            stringRenderer = new CidStringRenderer();
+            imageElementOptimizer = new ImageElementOptimizer();
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace Tridion.Context.Image.TemplateBuildingBlocks.Tests
         {
             StringAssert.Contains(
                 "<img src=\"/t/scale/<tcdl:eval expression='ui.bannerImageWidth'/>/source/Preview/besttech/multimedia/Electronics%20Store%201.jpg\"  usemap",
-                stringRenderer.RenderInput(LongHtmlString, "/t"));
+                imageElementOptimizer.OptimizeElements(LongHtmlString, "/t"));
         }
 
         [Test]
@@ -65,11 +65,11 @@ namespace Tridion.Context.Image.TemplateBuildingBlocks.Tests
         {
             StringAssert.Contains(
                 "<img src=\"/t/scale/<tcdl:eval expression='ui.bannerImageWidth'/>/source/multimedia/image.jpg\"  data-id=\"1\"  class=\"test\"",
-                stringRenderer.RenderInput(TwoImageHtmlString, "/t"));
+                imageElementOptimizer.OptimizeElements(TwoImageHtmlString, "/t"));
 
             StringAssert.Contains(
                 "<img src=\"/t/scale/<tcdl:eval expression='ui.bannerImageWidth'/>/source/multimedia/image2.jpg\"  />",
-                stringRenderer.RenderInput(TwoImageHtmlString, "/t"));
+                imageElementOptimizer.OptimizeElements(TwoImageHtmlString, "/t"));
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace Tridion.Context.Image.TemplateBuildingBlocks.Tests
         {
             StringAssert.Contains(
                 "<img src=\"/t/scale/<tcdl:eval expression='ui.bannerImageWidth'/>/source/multimedia/image.jpg/to/myimage.gif\"    class=\"test\"",
-                stringRenderer.RenderInput(TwoRuleHtmlString, "/t"));
+                imageElementOptimizer.OptimizeElements(TwoRuleHtmlString, "/t"));
         }
 
         [Test]
@@ -85,28 +85,28 @@ namespace Tridion.Context.Image.TemplateBuildingBlocks.Tests
         {
             StringAssert.Contains(
                 "<img src=\"http://my.site.com/transform/scale/<tcdl:eval expression='ui.bannerImageWidth'/>/source/multimedia/image.jpg/to/myimage.gif\"    class=\"test\"",
-                stringRenderer.RenderInput(TwoRuleHtmlString, "http://my.site.com/transform"));
+                imageElementOptimizer.OptimizeElements(TwoRuleHtmlString, "http://my.site.com/transform"));
         }
 
         [Test]
         public void NoRuleTest()
         {
             StringAssert.Contains("<img src=\"tcm:4-139\" tridion:href=\"tcm:4-139\" ",
-                stringRenderer.RenderInput(NoRuleHtmlString, "K"));
+                imageElementOptimizer.OptimizeElements(NoRuleHtmlString, "K"));
         }
 
         [Test]
         public void OnlyDataToRuleTest()
         {
             StringAssert.Contains("<img src=\"/t/Images/a5f5ec.jpg/to/png\"",
-                stringRenderer.RenderInput(OnlyDataToRuleString, "/t"));
+                imageElementOptimizer.OptimizeElements(OnlyDataToRuleString, "/t"));
         }
 
         [Test]
         public void AbsoluteUrlRuleTest()
         {
             StringAssert.Contains("<img src=\"/t/scale/<tcdl:eval expression='ui.bannerImageWidth'/>/http/www.mysite.com/Images/a5f5ec.jpg\"",
-                stringRenderer.RenderInput(AbsoluteUrlRuleString, "/t"));
+                imageElementOptimizer.OptimizeElements(AbsoluteUrlRuleString, "/t"));
         }
     }
 }

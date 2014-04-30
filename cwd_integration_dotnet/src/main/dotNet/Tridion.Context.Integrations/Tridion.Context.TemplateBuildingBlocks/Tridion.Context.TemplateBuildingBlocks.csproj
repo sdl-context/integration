@@ -9,8 +9,8 @@
     <ProjectGuid>{6F9873EC-74EE-4053-AACA-DC1972C6D40F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tridion.Context.Image.TemplateBuildingBlocks</RootNamespace>
-    <AssemblyName>Tridion.Context.Image.TemplateBuildingBlocks</AssemblyName>
+    <RootNamespace>Tridion.Context.TemplateBuildingBlocks</RootNamespace>
+    <AssemblyName>Tridion.Context.TemplateBuildingBlocks</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,13 +63,13 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CIDImageResolver.cs" />
-    <Compile Include="CIDStringRenderer.cs" />
+    <Compile Include="ImageOptimizer.cs" />
+    <Compile Include="ImageElementOptimizer.cs" />
     <Compile Include="Properties\CommonAssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\CIDImageResolverParameters.xsd">
+    <EmbeddedResource Include="Resources\ImageOptimizerParameters.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

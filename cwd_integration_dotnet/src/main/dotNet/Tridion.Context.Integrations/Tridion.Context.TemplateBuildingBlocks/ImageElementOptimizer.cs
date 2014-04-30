@@ -17,19 +17,24 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Tridion.Context.Image.TemplateBuildingBlocks
+namespace Tridion.Context.TemplateBuildingBlocks
 {
-    public class CidStringRenderer
+    public class ImageElementOptimizer
     {
-        private string CombineStringBits(string rule, string imageSource, string dataCidRule, string dataToRule,
+        private static string CombineStringBits(string root, string imageSource, string dataRule, string dataToRule,
             string otherHtmlParts1, string otherHtmlParts2, string otherHtmlParts3, string otherHtmlParts4)
         {
-            return "<img src=\"" + rule + dataCidRule + Regex.Replace(imageSource, "^(?i:(https?)):/", "/$1") +
-                   dataToRule + "\"" +
-                   otherHtmlParts1 + otherHtmlParts2 + otherHtmlParts3 + otherHtmlParts4 + "/>";
+            return "<img src=\"" + root + dataRule + Regex.Replace(imageSource, "^(?i:(https?)):/", "/$1") +
+                   dataToRule + "\"" + otherHtmlParts1 + otherHtmlParts2 + otherHtmlParts3 + otherHtmlParts4 + "/>";
         }
 
-        public string RenderInput(string content, string rule)
+        /// <summary>
+        /// Optimizes image elements, replacing the src attribute with an appropriately formed image transformation rule 
+        /// </summary>
+        /// <param name="content">The HTML content to optimize</param>
+        /// <param name="root">The image optimzer root location</param>
+        /// <returns></returns>
+        public string OptimizeElements(string content, string root)
         {
             var regex =
                 new Regex(
@@ -45,7 +50,7 @@ namespace Tridion.Context.Image.TemplateBuildingBlocks
                     .Aggregate(content,
                         (current, match) =>
                             current.Replace(match.Groups[0].ToString(),
-                                CombineStringBits(rule, match.Groups[2].ToString(), match.Groups[4].ToString(),
+                                CombineStringBits(root, match.Groups[2].ToString(), match.Groups[4].ToString(),
                                     match.Groups[6].ToString(), match.Groups[1].ToString(), match.Groups[3].ToString(),
                                     match.Groups[5].ToString(), match.Groups[7].ToString())));
         }
