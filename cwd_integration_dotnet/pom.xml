@@ -141,6 +141,19 @@
                                 </goals>
                             </execution>
                             <execution>
+                                <id>dotnet-dependencies-clean</id>
+                                <phase>pre-clean</phase>
+                                <configuration>
+                                    <executable>${nuget.path}</executable>
+                                    <arguments>
+                                        <argument>restore</argument>
+                                    </arguments>
+                                </configuration>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                            <execution>
                                 <id>dotnet-clean</id>
                                 <phase>clean</phase>
                                 <configuration>
