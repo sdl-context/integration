@@ -86,21 +86,4 @@ module. For example:
     <img src="/multimedia/image2.jpg" data-cid-rule="/scale/<tcdl:eval expression='ui.bannerImageWidth'/>/source"/>
 
 
-## Building from source
-
-To build the Contextual Web Delivery Integrations from source, follow these steps:
-
-1.  Ensure you have .NET 4.0 or above installed on your build machine
-2.  Ensure that you have a Tridion CME installation on your local machine. This will set the TRIDION_HOME environment
-variable.
-3.  Ensure that you have a copy of Maven 3 and Java 1.7 or above on your build machine
-4.  Run the following command from the top of the context-integrations distribution:
-
-        mvn clean install
-
-The build system will create the distribution files within the following folder:
-
-    cwd_integration_distribution\target\cwd_integration_distribution
-
-
 
