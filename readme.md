@@ -22,3 +22,7 @@ use of the Contextual Image Delivery transformation service.
 
 Please refer to the individual readme.md files within each module folder for details of installing and configuring the
 supplied modules.
+
+# License
+
+SDL Tridion Contextual Web Delivery Integrations is released under version 2.0 of the Apache License.
