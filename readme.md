@@ -12,6 +12,11 @@ Delivery modules. The following modules are provided:
 This module provides supporting JavaScript to allow users of SDL Tridion to make use of the Contextual Image Delivery
 transformation service.
 
+*   Contextual Image Optimizer Template Building Block
+
+This module provides a Contextual Image Optimizer Template Building Block (TBB) that allow users of SDL Tridion to make
+use of the Contextual Image Delivery transformation service.
+
 
 ## Installation and Configuration
 
