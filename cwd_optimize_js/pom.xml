@@ -95,7 +95,6 @@
                             </includes>
                             <excludes>
                                 <exclude>**/vendor/**</exclude>
-                                <exclude>src/test/**</exclude>
                             </excludes>
                         </configuration>
                         <phase>process-sources</phase>
